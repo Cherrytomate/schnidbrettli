@@ -6,7 +6,9 @@ import time
 import os
 
 
-
+FTP_HOST= os.getenv("FTP_HOST")
+FTP_USER= os.getenv("FTP_USER")
+FTP_PASS= os.getenv("FTP_PASS")
 upload_ftp_dir ="/www/schnidbrettli.ch/wp-content/uploads/pictureresizer_out"
 download_ftp_dir ="/www/schnidbrettli.ch/wp-content/uploads/pictureresizer_in"
 
