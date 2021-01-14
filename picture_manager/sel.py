@@ -6,6 +6,7 @@ import os
 
 def sel():
     print("test")
+    print("test")
     browser = webdriver.Chrome("C:/Users/Jeremy/Downloads/chromedriver_win32/chromedriver.exe")
     browser.get('https://portal.zakeke.com/en-US/Admin/Login')
     time.sleep(2)
