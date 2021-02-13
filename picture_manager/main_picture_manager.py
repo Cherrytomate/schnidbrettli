@@ -1,16 +1,15 @@
-import ftplib
-from picture_manager.ftp_manager import FDPParteiManager
-from picture_manager.background_remove import remove_bg
-from picture_manager.image_cropper import cropper
-import time
 import os
+import time
 
+from picture_manager.background_remove import remove_bg
+from picture_manager.ftp_manager import FDPParteiManager
+from picture_manager.image_cropper import cropper
 
 FTP_HOST= os.getenv("FTP_HOST")
 FTP_USER= os.getenv("FTP_USER")
 FTP_PASS= os.getenv("FTP_PASS")
-upload_ftp_dir ="/www/schnidbrettli.ch/wp-content/uploads/pictureresizer_out"
-download_ftp_dir ="/www/schnidbrettli.ch/wp-content/uploads/pictureresizer_in"
+upload_ftp_dir ="/www/schnidbrettli.ch/wp-content/uploads/pictureresizer_out/"
+download_ftp_dir ="/www/schnidbrettli.ch/wp-content/uploads/pictureresizer_in/"
 
 def pictures():
     fdp_partei_manager = FDPParteiManager(FTP_HOST, FTP_USER, FTP_PASS,upload_ftp_dir,download_ftp_dir)
@@ -28,6 +27,7 @@ def pictures():
         if files_list != []:
 
             downloaded_files = fdp_partei_manager.download_images(files_list)
+
             bg_removed_files = remove_bg(downloaded_files)
             cropped_files = cropper(bg_removed_files)
 
@@ -35,7 +35,7 @@ def pictures():
                 try:
                     fdp_partei_manager.upload_image(file)
                 except:
-                    print()
+                    print("fehler")
 
         else:
             time.sleep(1)

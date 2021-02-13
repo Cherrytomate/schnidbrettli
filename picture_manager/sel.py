@@ -1,13 +1,13 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-import time
 import os
+import time
+from selenium import webdriver
+
 
 def sel():
-    print("test")
-    print("test")
-    browser = webdriver.Chrome("C:/Users/Jeremy/Downloads/chromedriver_win32/chromedriver.exe")
+    b = os.getenv("ZAKEKE_USER")
+    a = os.getenv("ZAKEKE_PW")
+    print(a,b)
+    browser = webdriver.Chrome("chromedriver")
     browser.get('https://portal.zakeke.com/en-US/Admin/Login')
     time.sleep(2)
     browser.find_element_by_id("txt-username").click()
